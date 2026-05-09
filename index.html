@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal website of Jacob B. Solaña">
   <title>Jacob B. Solaña</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,23 +41,32 @@
     a:hover {
       text-decoration: underline;
     }
+    a:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
+    .contact a {
+      padding: 4px 2px;
+    }
     .sep {
       margin: 0 6px;
-      color: #ccc;
+      color: #999;
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>Jacob B. Solaña</h1>
-    <p class="tagline">Tropical Filipino boi lost in Finland.</p>
-    <p class="contact">
+    <header>
+      <h1>Jacob B. Solaña</h1>
+      <p class="tagline">Tropical Filipino boi lost in Finland.</p>
+    </header>
+    <footer class="contact">
       <a href="mailto:jacobbsolana@gmail.com">Email</a>
       <span class="sep">&middot;</span>
       <a href="https://www.linkedin.com/in/jacob-sola%C3%B1a-543692183/">LinkedIn</a>
       <span class="sep">&middot;</span>
       <a href="https://github.com/jcobrew">GitHub</a>
-    </p>
+    </footer>
   </main>
 </body>
 </html>
