@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="g3" cx="40%" cy="60%" r="85%">
+      <stop offset="0%" stop-color="#b25590"/>
+      <stop offset="55%" stop-color="#3a1530"/>
+      <stop offset="100%" stop-color="#180816"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#g3)"/>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-family="Georgia, serif" font-size="14" fill="rgba(255,255,255,0.45)" letter-spacing="0.3em">PHOTO 03</text>
+</svg>
