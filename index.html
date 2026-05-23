@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal website of Jacob B. Solaña — storytelling, placeholder edition.">
+  <meta name="description" content="Personal website of Jacob B. Solaña.">
   <title>Jacob B. Solaña</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Side photos that drift in from the edges as the cursor approaches them.
-       Each photo has a base rotation (data-rot) and base off-screen offset (data-off, in %)
-       that script.js composes with cursor-driven progress. -->
   <div id="side-peek-layer" aria-hidden="true">
     <figure class="peek left peek-l1" data-rot="-5" data-off="96"><img src="assets/placeholders/photo-01.svg" alt=""></figure>
     <figure class="peek left peek-l2" data-rot="3"  data-off="98"><img src="assets/placeholders/photo-02.svg" alt=""></figure>
@@ -25,48 +22,23 @@
     <header>
       <h1>Jacob B. Solaña</h1>
       <p class="tagline">Tropical Filipino boi lost in Finland.</p>
+      <nav class="site-nav" aria-label="primary">
+        <a href="index.html" aria-current="page">home</a>
+        <span class="sep">&middot;</span>
+        <a href="story.html">story</a>
+        <span class="sep">&middot;</span>
+        <a href="projects.html">projects</a>
+      </nav>
     </header>
 
-    <section>
-      <h2>chapter one</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <section class="teaser">
+      <h2><a href="story.html">story</a></h2>
+      <p>Lorem ipsum dolor sit amet — chapters, a reel, the things i'm into.</p>
     </section>
 
-    <section>
-      <h2>chapter two</h2>
-      <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida.</p>
-      <p>Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam.</p>
-      <p>Maecenas fermentum consequat mi. Donec fermentum. Pellentesque malesuada nulla a mi. Duis sapien sem, aliquet nec, commodo eget, consequat quis, neque. Aliquam faucibus, elit ut dictum aliquet, felis nisl adipiscing sapien.</p>
-    </section>
-
-    <!-- TODO: drop a real <video> in here. Example:
-         <video class="reel-frame" src="assets/reel.mp4" muted loop playsinline controls></video>
-         The .reel-frame styling already gives it the cinematic glow. -->
-    <section class="reel" aria-label="the reel">
-      <div class="reel-frame" role="button" tabindex="0" aria-label="play reel">
-        <div class="reel-play" aria-hidden="true">&#9654;</div>
-      </div>
-      <p class="reel-caption">the reel — placeholder, click to expand</p>
-    </section>
-
-    <section>
-      <h2>things i'm into</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus suscipit tortor eget felis porttitor volutpat.</p>
-      <div class="gallery">
-        <figure class="gallery-item"><img src="assets/placeholders/photo-01.svg" alt=""></figure>
-        <figure class="gallery-item"><img src="assets/placeholders/photo-02.svg" alt=""></figure>
-        <figure class="gallery-item"><img src="assets/placeholders/photo-03.svg" alt=""></figure>
-        <figure class="gallery-item"><img src="assets/placeholders/photo-04.svg" alt=""></figure>
-        <figure class="gallery-item"><img src="assets/placeholders/photo-07.svg" alt=""></figure>
-        <figure class="gallery-item"><img src="assets/placeholders/photo-08.svg" alt=""></figure>
-      </div>
-    </section>
-
-    <section>
-      <h2>chapter three</h2>
-      <p>Quisque velit nisi, pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>
-      <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh.</p>
+    <section class="teaser">
+      <h2><a href="projects.html">projects</a></h2>
+      <p>Consectetur adipiscing elit — what's shipping, tinkering, half-built.</p>
     </section>
 
     <footer class="contact">
