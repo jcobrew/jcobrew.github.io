@@ -57,7 +57,34 @@ header h1 {
   color: var(--fg-dim);
   font-style: italic;
   font-size: 1.1rem;
-  margin-bottom: 28vh;
+  margin-bottom: 1.4rem;
+}
+
+/* === Site nav === */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 18vh;
+}
+
+.site-nav a {
+  color: var(--fg-dim);
+  border-bottom: none;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover { color: var(--fg); }
+
+.site-nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.site-nav .sep {
+  color: var(--fg-faint);
 }
 
 section {
@@ -266,12 +293,112 @@ a:focus-visible {
 .peek-r2 { top: 48%; }
 .peek-r3 { top: 78%; }
 
+/* === Home teasers === */
+section.teaser {
+  margin: 10vh 0;
+}
+
+section.teaser h2 {
+  margin-bottom: 0.5rem;
+}
+
+section.teaser h2 a {
+  color: var(--fg);
+  border-bottom: none;
+  font-family: "Iowan Old Style", "Apple Garamond", "Hoefler Text", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+section.teaser h2 a::after {
+  content: " \2192";
+  color: var(--fg-faint);
+  transition: color 0.2s ease, transform 0.3s ease;
+  display: inline-block;
+  margin-left: 0.3rem;
+}
+
+section.teaser h2 a:hover { color: var(--accent); }
+section.teaser h2 a:hover::after {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+section.teaser p {
+  color: var(--fg-dim);
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+/* === Projects === */
+section.project-intro {
+  margin: 6vh 0 14vh;
+}
+
+section.project {
+  margin: 14vh 0;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.project-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--frame), 0 10px 30px rgba(0, 0, 0, 0.55);
+}
+
+.project-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(0.92);
+}
+
+.project-body h3 {
+  font-family: "Iowan Old Style", "Apple Garamond", "Hoefler Text", Georgia, serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.project-body p {
+  margin-bottom: 1rem;
+  color: var(--fg);
+}
+
+.project-body p + p { color: var(--fg-dim); }
+
+.status-pill {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border: 1px solid rgba(244, 196, 106, 0.4);
+  border-radius: 999px;
+  color: var(--accent);
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  white-space: nowrap;
+}
+
 /* === Mobile === */
 @media (max-width: 768px) {
   body { font-size: 16px; }
   main { padding: 12vh 20px 8vh; }
-  .tagline { margin-bottom: 20vh; }
+  .site-nav { margin-bottom: 14vh; }
   section { margin: 16vh 0; }
+  section.teaser { margin: 8vh 0; }
+  section.project { grid-template-columns: 90px 1fr; gap: 16px; margin: 10vh 0; }
   .reel { margin-left: 0; margin-right: 0; }
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   #side-peek-layer { display: none; }
