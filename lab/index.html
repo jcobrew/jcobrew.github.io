@@ -1,0 +1,32 @@
+---
+layout: default
+title: lab
+description: Small interactive experiments. Mostly half-finished, sometimes good.
+permalink: /lab/
+---
+
+<section class="lab-intro">
+  <h2>lab</h2>
+  <p>Little toys, sketches, things i'm poking at. No promises.</p>
+</section>
+
+{% assign experiments = site.experiments | sort: 'date' | reverse %}
+
+{% if experiments.size == 0 %}
+  <section><p><em>(no experiments yet.)</em></p></section>
+{% else %}
+  <section class="lab-list">
+    {% for x in experiments %}
+      <a class="lab-card" href="{{ x.demo | relative_url }}">
+        {% if x.thumb %}
+          <figure class="lab-card-thumb"><img src="{{ x.thumb | relative_url }}" alt=""></figure>
+        {% endif %}
+        <div class="lab-card-body">
+          <h3>{{ x.title }}</h3>
+          <time datetime="{{ x.date | date_to_xmlschema }}">{{ x.date | date: "%B %-d, %Y" }}</time>
+          {% if x.excerpt %}<p>{{ x.excerpt }}</p>{% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </section>
+{% endif %}

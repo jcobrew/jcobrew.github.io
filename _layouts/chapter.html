@@ -1,0 +1,24 @@
+---
+layout: default
+nav: story
+---
+
+<article class="chapter">
+  <p class="chapter-back"><a href="{{ '/story.html' | relative_url }}">&larr; story</a></p>
+  <h2>{{ page.title }}</h2>
+  <p class="chapter-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+
+  {% if page.video %}
+    <div class="chapter-video">
+      <iframe src="{{ page.video }}" title="{{ page.title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  {% endif %}
+
+  {% if page.hero and page.video == nil %}
+    <figure class="chapter-hero"><img src="{{ page.hero | relative_url }}" alt=""></figure>
+  {% endif %}
+
+  <div class="chapter-body">
+    {{ content }}
+  </div>
+</article>

@@ -1,0 +1,23 @@
+title: Jacob B. Solaña
+description: Tropical Filipino boi lost in Finland.
+tagline: Tropical Filipino boi lost in Finland.
+
+collections:
+  chapters:
+    output: true
+    permalink: /story/:name/
+  experiments:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: chapters
+    values:
+      layout: chapter
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor

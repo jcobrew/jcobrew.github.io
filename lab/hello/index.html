@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hello, canvas — lab</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #0a0a0a; color: #eee; font-family: ui-sans-serif, system-ui, sans-serif; overflow: hidden; }
+    canvas { display: block; width: 100vw; height: 100vh; }
+    .back { position: fixed; top: 16px; left: 18px; color: #aaa; text-decoration: none; font-size: 14px; mix-blend-mode: difference; }
+    .back:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <a class="back" href="/lab/">&larr; lab</a>
+  <canvas id="c"></canvas>
+  <script>
+    const c = document.getElementById('c');
+    const ctx = c.getContext('2d');
+    let w, h, dots = [];
+    const mouse = { x: -9999, y: -9999 };
+
+    function resize() {
+      w = c.width = window.innerWidth * devicePixelRatio;
+      h = c.height = window.innerHeight * devicePixelRatio;
+      c.style.width = window.innerWidth + 'px';
+      c.style.height = window.innerHeight + 'px';
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    for (let i = 0; i < 220; i++) {
+      dots.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.3 * devicePixelRatio,
+        vy: (Math.random() - 0.5) * 0.3 * devicePixelRatio,
+        r: (Math.random() * 1.5 + 0.5) * devicePixelRatio,
+      });
+    }
+
+    window.addEventListener('pointermove', (e) => {
+      mouse.x = e.clientX * devicePixelRatio;
+      mouse.y = e.clientY * devicePixelRatio;
+    });
+
+    function tick() {
+      ctx.fillStyle = 'rgba(10,10,10,0.18)';
+      ctx.fillRect(0, 0, w, h);
+
+      for (const d of dots) {
+        const dx = d.x - mouse.x, dy = d.y - mouse.y;
+        const dist2 = dx * dx + dy * dy;
+        if (dist2 < 14000 * devicePixelRatio) {
+          const f = 1 / Math.max(80, Math.sqrt(dist2));
+          d.vx += dx * f * 0.6;
+          d.vy += dy * f * 0.6;
+        }
+        d.vx *= 0.96; d.vy *= 0.96;
+        d.x += d.vx; d.y += d.vy;
+        if (d.x < 0) d.x += w; if (d.x > w) d.x -= w;
+        if (d.y < 0) d.y += h; if (d.y > h) d.y -= h;
+
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+        ctx.fillStyle = '#e8e8e8';
+        ctx.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  </script>
+</body>
+</html>
