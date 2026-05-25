@@ -585,6 +585,164 @@ article.experiment-meta > h2 {
   opacity: 1;
 }
 
+/* === Moonset theme (story page only) ===
+   Sky, moon, clouds, and sun glow respond to scroll progress.
+   CSS variables (--scroll-progress, --moon-x, --moon-y, --moon-glow-intensity,
+   --sun-opacity, --cloud-opacity) are written by script.js. */
+body.story {
+  --scroll-progress: 0;
+  --moon-x: 15vw;
+  --moon-y: 12vh;
+  --moon-glow-intensity: 0;
+  --sun-opacity: 0;
+  --cloud-opacity: 0.35;
+  background: transparent;
+}
+
+html:has(body.story) { background: #0a0a1a; }
+
+/* Replace the radial vignette with a centered column overlay so the
+   sky stays vibrant at the edges while the text column keeps contrast. */
+body.story::before {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    transparent 16%,
+    rgba(10, 10, 18, 0.55) 34%,
+    rgba(10, 10, 18, 0.65) 50%,
+    rgba(10, 10, 18, 0.55) 66%,
+    transparent 84%,
+    transparent 100%
+  );
+}
+
+#sky-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #0a0a1a 0%,
+    #14143a 50%,
+    #1c1a44 100%
+  );
+}
+
+/* Dawn overlay — opacity == scroll-progress.
+   Indigo blends through rose-violet, magenta, coral, gold as it fades in. */
+#sky::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: var(--scroll-progress);
+  background: linear-gradient(
+    to bottom,
+    #5a3a78 0%,
+    #8a3a78 28%,
+    #c84a78 52%,
+    #e87a4a 78%,
+    #f4c46a 100%
+  );
+}
+
+#moon {
+  position: absolute;
+  top: var(--moon-y);
+  left: var(--moon-x);
+  width: 90px;
+  height: 90px;
+  margin: -45px 0 0 -45px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fefaf0 0%,
+    #f4e8c8 55%,
+    #d8c298 85%,
+    #b89c70 100%
+  );
+  box-shadow:
+    0 0 calc(40px + var(--moon-glow-intensity) * 70px) rgba(255, 240, 200, calc(0.45 + var(--moon-glow-intensity) * 0.35)),
+    0 0 calc(90px + var(--moon-glow-intensity) * 140px) rgba(255, 220, 170, calc(0.18 + var(--moon-glow-intensity) * 0.32));
+  will-change: top, left;
+}
+
+#moon::before {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 28% 32%, rgba(80, 60, 40, 0.10) 0%, transparent 14%),
+    radial-gradient(circle at 62% 58%, rgba(80, 60, 40, 0.08) 0%, transparent 11%),
+    radial-gradient(circle at 48% 78%, rgba(80, 60, 40, 0.07) 0%, transparent 9%),
+    radial-gradient(circle at 72% 28%, rgba(80, 60, 40, 0.06) 0%, transparent 7%);
+}
+
+#sun-glow {
+  position: absolute;
+  bottom: -25vh;
+  left: -15vw;
+  width: 85vw;
+  height: 85vh;
+  opacity: var(--sun-opacity);
+  background: radial-gradient(
+    ellipse at 30% 80%,
+    rgba(255, 210, 130, 0.55) 0%,
+    rgba(244, 150, 100, 0.32) 22%,
+    rgba(212, 100, 130, 0.14) 48%,
+    transparent 70%
+  );
+  filter: blur(12px);
+}
+
+.cloud {
+  position: absolute;
+  border-radius: 50%;
+  opacity: var(--cloud-opacity);
+  background: radial-gradient(
+    ellipse,
+    rgba(225, 215, 235, 0.55) 0%,
+    rgba(185, 175, 205, 0.32) 42%,
+    transparent 72%
+  );
+  filter: blur(10px);
+  will-change: transform;
+}
+
+.cloud-1 { top: 18%; width: 380px; height: 95px; animation: drift-cloud-1 85s linear infinite; }
+.cloud-2 { top: 34%; width: 480px; height: 115px; animation: drift-cloud-2 115s linear infinite; }
+.cloud-3 { top: 9%;  width: 320px; height: 80px;  animation: drift-cloud-3 95s linear infinite; }
+.cloud-4 { top: 52%; width: 420px; height: 105px; animation: drift-cloud-4 135s linear infinite; }
+
+@keyframes drift-cloud-1 {
+  from { transform: translateX(-30vw); }
+  to   { transform: translateX(130vw); }
+}
+@keyframes drift-cloud-2 {
+  from { transform: translateX(130vw); }
+  to   { transform: translateX(-45vw); }
+}
+@keyframes drift-cloud-3 {
+  from { transform: translateX(-40vw); }
+  to   { transform: translateX(130vw); }
+}
+@keyframes drift-cloud-4 {
+  from { transform: translateX(130vw); }
+  to   { transform: translateX(-45vw); }
+}
+
+/* Re-stack: sky stage at the bottom, side-peek photos in front of the sky,
+   content on top. Vignette/column overlay sits between. */
+body.story #side-peek-layer { z-index: 3; }
+body.story main { z-index: 4; }
+
 /* === Mobile === */
 @media (max-width: 768px) {
   body { font-size: 16px; }
@@ -598,6 +756,21 @@ article.experiment-meta > h2 {
   .reel { margin-left: 0; margin-right: 0; }
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   #side-peek-layer { display: none; }
+
+  /* Moonset scales down on mobile but stays visible. */
+  body.story #moon { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
+  body.story .cloud-1 { width: 240px; height: 70px; }
+  body.story .cloud-2 { width: 300px; height: 80px; }
+  body.story .cloud-3 { width: 200px; height: 60px; }
+  body.story .cloud-4 { width: 260px; height: 75px; }
+  body.story::before {
+    background: linear-gradient(
+      to right,
+      rgba(10, 10, 18, 0.55) 0%,
+      rgba(10, 10, 18, 0.65) 50%,
+      rgba(10, 10, 18, 0.55) 100%
+    );
+  }
 }
 
 /* === Reduced motion === */
