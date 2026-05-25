@@ -7,7 +7,19 @@
   <title>Jacob B. Solaña — story</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="story">
+
+  <!-- Moonset-at-dawn backdrop. Sky color, moon position, sun glow, and cloud opacity
+       are driven by scroll progress via CSS variables set in script.js. -->
+  <div id="sky-stage" aria-hidden="true">
+    <div id="sky"></div>
+    <div class="cloud cloud-1"></div>
+    <div class="cloud cloud-2"></div>
+    <div class="cloud cloud-3"></div>
+    <div class="cloud cloud-4"></div>
+    <div id="moon"></div>
+    <div id="sun-glow"></div>
+  </div>
 
   <!-- Side photos that drift in from the edges as the cursor approaches them.
        Each photo has a base rotation (data-rot) and base off-screen offset (data-off, in %)
