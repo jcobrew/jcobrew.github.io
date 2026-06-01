@@ -1,11 +1,11 @@
 :root {
-  --bg: #0a0a0c;
-  --bg-soft: #14131a;
-  --fg: #e8e6e0;
-  --fg-dim: #8a857c;
-  --fg-faint: #5a564f;
-  --accent: #f4c46a;
-  --accent-soft: rgba(244, 196, 106, 0.18);
+  --bg: #000000;
+  --bg-soft: #0c1430;
+  --fg: #f4f5fa;
+  --fg-dim: #8d92a8;
+  --fg-faint: #4a4f60;
+  --accent: #3a5fa8;
+  --accent-soft: rgba(58, 95, 168, 0.16);
   --frame: rgba(255, 255, 255, 0.08);
 }
 
@@ -23,24 +23,12 @@ body {
   letter-spacing: 0.005em;
   overflow-x: hidden;
   min-height: 100vh;
-  position: relative;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 0%, transparent 38%, rgba(0,0,0,0.6) 100%);
-  z-index: 1;
 }
 
 main {
   max-width: 680px;
   margin: 0 auto;
   padding: 16vh 24px 10vh;
-  position: relative;
-  z-index: 3;
 }
 
 header h1 {
@@ -67,7 +55,7 @@ header h1 {
   align-items: baseline;
   font-size: 0.95rem;
   letter-spacing: 0.08em;
-  margin-bottom: 18vh;
+  margin-bottom: 16vh;
 }
 
 .site-nav a {
@@ -87,11 +75,12 @@ header h1 {
   color: var(--fg-faint);
 }
 
+/* === Sections === */
 section {
-  margin: 22vh 0;
+  margin: 14vh 0;
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 section.in-view {
@@ -117,114 +106,9 @@ section p + p {
   color: var(--fg-dim);
 }
 
-/* === Reel === */
-.reel {
-  margin: 26vh -40px;
-  text-align: center;
-}
-
-.reel-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 6px;
-  background: linear-gradient(135deg, #1a1410 0%, #2a1f15 50%, #0e0a06 100%);
-  box-shadow:
-    0 0 60px rgba(244, 196, 106, 0.12),
-    0 0 0 1px var(--frame),
-    inset 0 0 60px rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.6s ease, box-shadow 0.6s ease;
-  overflow: hidden;
-}
-
-.reel-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at 30% 40%, rgba(244, 196, 106, 0.10), transparent 60%),
-    radial-gradient(circle at 70% 60%, rgba(120, 80, 200, 0.08), transparent 60%);
-  animation: drift 14s ease-in-out infinite alternate;
-}
-
-@keyframes drift {
-  0%   { transform: translate(-4%, -2%) scale(1.05); }
-  100% { transform: translate(4%, 2%) scale(1.12); }
-}
-
-.reel-play {
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  background: rgba(244, 196, 106, 0.10);
-  border: 1px solid rgba(244, 196, 106, 0.45);
-  color: var(--accent);
-  font-size: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 2;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.reel-frame:hover .reel-play {
-  transform: scale(1.1);
-  background: rgba(244, 196, 106, 0.22);
-}
-
-.reel-frame.expanded {
-  transform: scale(1.03);
-  box-shadow:
-    0 0 140px rgba(244, 196, 106, 0.35),
-    0 0 0 1px var(--accent),
-    inset 0 0 60px rgba(0, 0, 0, 0.5);
-}
-
-.reel-caption {
-  margin-top: 1.2rem;
-  color: var(--fg-faint);
-  font-size: 0.85rem;
-  font-style: italic;
-  letter-spacing: 0.05em;
-}
-
-/* === Gallery === */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 2rem;
-}
-
-.gallery-item {
-  aspect-ratio: 4 / 5;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: 0 0 0 1px var(--frame), 0 10px 30px rgba(0, 0, 0, 0.55);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 0 1px rgba(244, 196, 106, 0.3), 0 18px 40px rgba(0, 0, 0, 0.7);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  filter: brightness(0.88) saturate(0.92);
-}
-
 /* === Footer === */
 footer.contact {
-  margin-top: 28vh;
+  margin-top: 22vh;
   padding-top: 2rem;
   border-top: 1px solid var(--frame);
   text-align: center;
@@ -235,11 +119,11 @@ footer.contact {
 a {
   color: var(--accent);
   text-decoration: none;
-  border-bottom: 1px solid rgba(244, 196, 106, 0.3);
+  border-bottom: 1px solid rgba(58, 95, 168, 0.35);
   padding-bottom: 1px;
   transition: border-color 0.2s ease, color 0.2s ease;
 }
-a:hover { border-bottom-color: var(--accent); color: #fbe2a8; }
+a:hover { border-bottom-color: var(--accent); color: #6f8fd4; }
 a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
@@ -251,47 +135,6 @@ a:focus-visible {
   margin: 0 10px;
   color: var(--fg-faint);
 }
-
-/* === Side peek layer === */
-#side-peek-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.peek {
-  position: absolute;
-  width: 200px;
-  aspect-ratio: 4 / 5;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 0 40px rgba(244, 196, 106, 0.06),
-    0 20px 60px rgba(0, 0, 0, 0.75);
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-  will-change: transform;
-}
-
-.peek img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  filter: brightness(0.78) saturate(0.95) contrast(1.05);
-}
-
-.peek.left  { left: 0;  transform: translateX(-96%) rotate(-5deg); }
-.peek.right { right: 0; transform: translateX(96%)  rotate(5deg);  }
-
-.peek-l1 { top: 10%; }
-.peek-l2 { top: 42%; }
-.peek-l3 { top: 72%; }
-.peek-r1 { top: 16%; }
-.peek-r2 { top: 48%; }
-.peek-r3 { top: 78%; }
 
 /* === Home teasers === */
 section.teaser {
@@ -333,11 +176,11 @@ section.teaser p {
 
 /* === Projects === */
 section.project-intro {
-  margin: 6vh 0 14vh;
+  margin: 6vh 0 12vh;
 }
 
 section.project {
-  margin: 14vh 0;
+  margin: 10vh 0;
   display: grid;
   grid-template-columns: 140px 1fr;
   gap: 28px;
@@ -357,7 +200,7 @@ section.project {
   height: 100%;
   display: block;
   object-fit: cover;
-  filter: brightness(0.85) saturate(0.92);
+  filter: brightness(0.85) saturate(0.85);
 }
 
 .project-body h3 {
@@ -383,7 +226,7 @@ section.project {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   padding: 3px 10px;
-  border: 1px solid rgba(244, 196, 106, 0.4);
+  border: 1px solid rgba(58, 95, 168, 0.5);
   border-radius: 999px;
   color: var(--accent);
   vertical-align: middle;
@@ -413,6 +256,7 @@ section.lab-list {
   align-items: start;
   text-decoration: none;
   color: inherit;
+  border-bottom: none;
   padding: 14px;
   margin: 0 -14px;
   border-radius: 4px;
@@ -440,7 +284,7 @@ section.lab-list {
   height: 100%;
   display: block;
   object-fit: cover;
-  filter: brightness(0.85) saturate(0.92);
+  filter: brightness(0.85) saturate(0.85);
 }
 
 .chapter-card-body h3,
@@ -484,6 +328,7 @@ article.experiment-meta {
 .chapter-back a {
   color: var(--fg-dim);
   text-decoration: none;
+  border-bottom: none;
   font-size: 0.85rem;
   letter-spacing: 0.08em;
 }
@@ -529,7 +374,7 @@ article.experiment-meta > h2 {
   width: 100%;
   height: auto;
   display: block;
-  filter: brightness(0.9) saturate(0.95);
+  filter: brightness(0.9) saturate(0.85);
 }
 
 .chapter-body p {
@@ -553,12 +398,36 @@ article.experiment-meta > h2 {
 .chapter-body a {
   color: var(--accent);
   text-decoration: underline;
-  text-decoration-color: rgba(244, 196, 106, 0.4);
+  text-decoration-color: rgba(58, 95, 168, 0.45);
   text-underline-offset: 3px;
+  border-bottom: none;
 }
 
 .chapter-body a:hover {
   text-decoration-color: var(--accent);
+}
+
+/* Inline gallery used inside chapter markdown */
+.chapter-body .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 2rem 0;
+}
+
+.chapter-body .gallery-item {
+  aspect-ratio: 4 / 5;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--frame), 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.chapter-body .gallery-item img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: brightness(0.85) saturate(0.85);
 }
 
 .experiment-launch {
@@ -576,6 +445,7 @@ article.experiment-meta > h2 {
 .lab-dot a {
   color: var(--fg-faint);
   text-decoration: none;
+  border-bottom: none;
   opacity: 0.5;
   transition: opacity 0.25s ease, color 0.25s ease;
 }
@@ -585,192 +455,17 @@ article.experiment-meta > h2 {
   opacity: 1;
 }
 
-/* === Moonset theme (story page only) ===
-   Sky, moon, clouds, and sun glow respond to scroll progress.
-   CSS variables (--scroll-progress, --moon-x, --moon-y, --moon-glow-intensity,
-   --sun-opacity, --cloud-opacity) are written by script.js. */
-body.story {
-  --scroll-progress: 0;
-  --moon-x: 15vw;
-  --moon-y: 12vh;
-  --moon-glow-intensity: 0;
-  --sun-opacity: 0;
-  --cloud-opacity: 0.35;
-  background: transparent;
-}
-
-html:has(body.story) { background: #0a0a1a; }
-
-/* Replace the radial vignette with a centered column overlay so the
-   sky stays vibrant at the edges while the text column keeps contrast. */
-body.story::before {
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    transparent 16%,
-    rgba(10, 10, 18, 0.55) 34%,
-    rgba(10, 10, 18, 0.65) 50%,
-    rgba(10, 10, 18, 0.55) 66%,
-    transparent 84%,
-    transparent 100%
-  );
-}
-
-#sky-stage {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-#sky {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    #0a0a1a 0%,
-    #14143a 50%,
-    #1c1a44 100%
-  );
-}
-
-/* Dawn overlay — opacity == scroll-progress.
-   Indigo blends through rose-violet, magenta, coral, gold as it fades in. */
-#sky::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: var(--scroll-progress);
-  background: linear-gradient(
-    to bottom,
-    #5a3a78 0%,
-    #8a3a78 28%,
-    #c84a78 52%,
-    #e87a4a 78%,
-    #f4c46a 100%
-  );
-}
-
-#moon {
-  position: absolute;
-  top: var(--moon-y);
-  left: var(--moon-x);
-  width: 90px;
-  height: 90px;
-  margin: -45px 0 0 -45px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle at 35% 35%,
-    #fefaf0 0%,
-    #f4e8c8 55%,
-    #d8c298 85%,
-    #b89c70 100%
-  );
-  box-shadow:
-    0 0 calc(40px + var(--moon-glow-intensity) * 70px) rgba(255, 240, 200, calc(0.45 + var(--moon-glow-intensity) * 0.35)),
-    0 0 calc(90px + var(--moon-glow-intensity) * 140px) rgba(255, 220, 170, calc(0.18 + var(--moon-glow-intensity) * 0.32));
-  will-change: top, left;
-}
-
-#moon::before {
-  content: "";
-  position: absolute;
-  inset: 6%;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 28% 32%, rgba(80, 60, 40, 0.10) 0%, transparent 14%),
-    radial-gradient(circle at 62% 58%, rgba(80, 60, 40, 0.08) 0%, transparent 11%),
-    radial-gradient(circle at 48% 78%, rgba(80, 60, 40, 0.07) 0%, transparent 9%),
-    radial-gradient(circle at 72% 28%, rgba(80, 60, 40, 0.06) 0%, transparent 7%);
-}
-
-#sun-glow {
-  position: absolute;
-  bottom: -25vh;
-  left: -15vw;
-  width: 85vw;
-  height: 85vh;
-  opacity: var(--sun-opacity);
-  background: radial-gradient(
-    ellipse at 30% 80%,
-    rgba(255, 210, 130, 0.55) 0%,
-    rgba(244, 150, 100, 0.32) 22%,
-    rgba(212, 100, 130, 0.14) 48%,
-    transparent 70%
-  );
-  filter: blur(12px);
-}
-
-.cloud {
-  position: absolute;
-  border-radius: 50%;
-  opacity: var(--cloud-opacity);
-  background: radial-gradient(
-    ellipse,
-    rgba(225, 215, 235, 0.55) 0%,
-    rgba(185, 175, 205, 0.32) 42%,
-    transparent 72%
-  );
-  filter: blur(10px);
-  will-change: transform;
-}
-
-.cloud-1 { top: 18%; width: 380px; height: 95px; animation: drift-cloud-1 85s linear infinite; }
-.cloud-2 { top: 34%; width: 480px; height: 115px; animation: drift-cloud-2 115s linear infinite; }
-.cloud-3 { top: 9%;  width: 320px; height: 80px;  animation: drift-cloud-3 95s linear infinite; }
-.cloud-4 { top: 52%; width: 420px; height: 105px; animation: drift-cloud-4 135s linear infinite; }
-
-@keyframes drift-cloud-1 {
-  from { transform: translateX(-30vw); }
-  to   { transform: translateX(130vw); }
-}
-@keyframes drift-cloud-2 {
-  from { transform: translateX(130vw); }
-  to   { transform: translateX(-45vw); }
-}
-@keyframes drift-cloud-3 {
-  from { transform: translateX(-40vw); }
-  to   { transform: translateX(130vw); }
-}
-@keyframes drift-cloud-4 {
-  from { transform: translateX(130vw); }
-  to   { transform: translateX(-45vw); }
-}
-
-/* Re-stack: sky stage at the bottom, side-peek photos in front of the sky,
-   content on top. Vignette/column overlay sits between. */
-body.story #side-peek-layer { z-index: 3; }
-body.story main { z-index: 4; }
-
 /* === Mobile === */
 @media (max-width: 768px) {
   body { font-size: 16px; }
   main { padding: 12vh 20px 8vh; }
-  .site-nav { margin-bottom: 14vh; }
-  section { margin: 16vh 0; }
+  .site-nav { margin-bottom: 12vh; }
+  section { margin: 12vh 0; }
   section.teaser { margin: 8vh 0; }
-  section.project { grid-template-columns: 90px 1fr; gap: 16px; margin: 10vh 0; }
+  section.project,
   .chapter-card,
   .lab-card { grid-template-columns: 90px 1fr; gap: 16px; }
-  .reel { margin-left: 0; margin-right: 0; }
-  .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  #side-peek-layer { display: none; }
-
-  /* Moonset scales down on mobile but stays visible. */
-  body.story #moon { width: 64px; height: 64px; margin: -32px 0 0 -32px; }
-  body.story .cloud-1 { width: 240px; height: 70px; }
-  body.story .cloud-2 { width: 300px; height: 80px; }
-  body.story .cloud-3 { width: 200px; height: 60px; }
-  body.story .cloud-4 { width: 260px; height: 75px; }
-  body.story::before {
-    background: linear-gradient(
-      to right,
-      rgba(10, 10, 18, 0.55) 0%,
-      rgba(10, 10, 18, 0.65) 50%,
-      rgba(10, 10, 18, 0.55) 100%
-    );
-  }
+  .chapter-body .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
 }
 
 /* === Reduced motion === */
@@ -781,5 +476,4 @@ body.story main { z-index: 4; }
     animation-iteration-count: 1 !important;
   }
   section { opacity: 1; transform: none; }
-  #side-peek-layer { display: none; }
 }
