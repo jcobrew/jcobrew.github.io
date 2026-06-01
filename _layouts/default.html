@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <title>{% if page.title and page.nav != 'home' %}{{ site.title }} — {{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <link rel="stylesheet" href="{{ '/styles.css' | relative_url }}">
+</head>
+<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+
+  {% if page.body_class == 'story' %}
+    <!-- Moonset-at-dawn backdrop. Sky color, moon position, sun glow, and cloud opacity
+         are driven by scroll progress via CSS variables set in script.js. -->
+    <div id="sky-stage" aria-hidden="true">
+      <div id="sky"></div>
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+      <div class="cloud cloud-4"></div>
+      <div id="moon"></div>
+      <div id="sun-glow"></div>
+    </div>
+  {% endif %}
+
+  {% include peek-layer.html %}
+
+  <main>
+    {% include header.html nav=page.nav %}
+
+    {{ content }}
+
+    {% include footer.html %}
+  </main>
+
+  <script src="{{ '/script.js' | relative_url }}"></script>
+</body>
+</html>

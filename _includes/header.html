@@ -1,0 +1,12 @@
+<header>
+  <h1>{{ site.title }}</h1>
+  <p class="tagline">{{ site.tagline }}</p>
+  {%- assign nav_page = include.nav | default: page.nav -%}
+  <nav class="site-nav" aria-label="primary">
+    <a href="{{ '/' | relative_url }}"{% if nav_page == 'home' %} aria-current="page"{% endif %}>home</a>
+    <span class="sep">&middot;</span>
+    <a href="{{ '/story.html' | relative_url }}"{% if nav_page == 'story' %} aria-current="page"{% endif %}>story</a>
+    <span class="sep">&middot;</span>
+    <a href="{{ '/projects.html' | relative_url }}"{% if nav_page == 'projects' %} aria-current="page"{% endif %}>projects</a>
+  </nav>
+</header>
